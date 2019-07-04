@@ -1,3 +1,4 @@
+//$(document).ready(function(){
 var cards = [
   { name: 'aquaman',         img: 'aquaman.jpg' },
   { name: 'batman',          img: 'batman.jpg' },
@@ -25,7 +26,7 @@ var cards = [
   { name: 'thor',            img: 'thor.jpg' }
 ];
 var memoryGame = new MemoryGame(cards);
-
+console.log(memoryGame.shuffleCards(cards))
 
 document.addEventListener("DOMContentLoaded", function(event) { 
   var html = '';
@@ -41,11 +42,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   // Bind the click event of each element to a function
   document.querySelectorAll('.back').forEach(function(card) {
-    card.onclick = function() {
+    card.onclick = function(e) {
       // TODO: write some code here
+      let clicked = e.currentTarget
+      $(clicked).toggleClass('front back')
+      
+      
       console.log('Card clicked')
     }
   });
 });
-
-
+//})
