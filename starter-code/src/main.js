@@ -41,15 +41,35 @@ document.addEventListener("DOMContentLoaded", function(event) {
   document.querySelector('#memory_board').innerHTML = html;
 
   // Bind the click event of each element to a function
-  document.querySelectorAll('.back').forEach(function(card) {
+  document.querySelectorAll('.card div').forEach(function(card) {
     card.onclick = function(e) {
       // TODO: write some code here
       let clicked = e.currentTarget
-      $(clicked).toggleClass('front back')
-      
-      
-      console.log('Card clicked')
+      $(clicked).toggleClass('back front')
+      $(clicked).siblings().toggleClass('front back')
+      //if (clicked.className === 'front'){
+        //return
+      //}
+      let currentlyClickedSuperHero = ($(clicked).parent().attr('data-card-name'))
+        memoryGame.pickedCards.push(currentlyClickedSuperHero);
+        memoryGame.pairsClicked.push(currentlyClickedSuperHero)
+        
+
     }
+    
   });
+
+  
+  let generate = function (){
+    let shuffledCards = shuffleCards(cards);
+    let fragment = document.createDocumentFragment();
+    cards.forEach(function createCard(card) {
+      let divToBeCloned = document.getElementsByClassName('.card')
+      let newCard = divToBeCloned.cloneNode(true);
+      fragment.appendChild(newCard)
+      shuffledCards.appendChild(fragment)
+    })
+    generate();
+  }
 });
 //})

@@ -2,8 +2,8 @@ class MemoryGame {
   constructor(cards){
     this.cards = cards;
     this.pickedCards = [];
-    this.pairsClicked;
-    this.pairsGuessed;
+    this.pairsClicked= [];
+    this.pairsGuessed;//card matched
   }
   }
 
@@ -22,14 +22,20 @@ class MemoryGame {
       
 
   MemoryGame.prototype.checkIfPair = function (card1, card2) {
-    if (card1 === card2) {
-      this.pairsClicked ++;
-      this.pairsGuessed ++;
+    
+    if ( pickedCards.length <=2){
+      (card1[0] === card2[1]) 
+      pairsClicked.push(card1, card2)
+      pairsClicked ++;
+      pairsGuessed ++;
       return true
     } else {
       return false
     }
   }
+  
+
+  
   MemoryGame.prototype.isFinished = function() {
 
   }
