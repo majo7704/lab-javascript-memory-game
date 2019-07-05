@@ -50,11 +50,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
       //if (clicked.className === 'front'){
         //return
       //}
-      let currentlyClickedSuperHero = ($(clicked).parent().attr('data-card-name'))
-        memoryGame.pickedCards.push(currentlyClickedSuperHero);
-        memoryGame.pairsClicked.push(currentlyClickedSuperHero)
-        
-
+      
+        memoryGame.pickedCards.push($(clicked).parent());
+        if(memoryGame.pickedCards.length === 2) {
+          memoryGame.checkIfPair()
+        }
     }
     
   });

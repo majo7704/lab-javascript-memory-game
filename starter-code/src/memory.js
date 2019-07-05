@@ -2,8 +2,8 @@ class MemoryGame {
   constructor(cards){
     this.cards = cards;
     this.pickedCards = [];
-    this.pairsClicked= [];
-    this.pairsGuessed;//card matched
+    this.pairsClicked = 0;
+    this.pairsGuessed = 0;//card matched
   }
   }
 
@@ -19,21 +19,24 @@ class MemoryGame {
     }
     return cards;
   }
-      
-
-  MemoryGame.prototype.checkIfPair = function (card1, card2) {
     
-    if ( pickedCards.length <=2){
-      (card1[0] === card2[1]) 
-      pairsClicked.push(card1, card2)
-      pairsClicked ++;
-      pairsGuessed ++;
-      return true
-    } else {
-      return false
-    }
-  }
+
+  MemoryGame.prototype.checkIfPair = function () {
+    let pickedCards = this.pickedCards
+      this.pairsClicked++;
+      let card1 = pickedCards[0];
+      let card2 = pickedCards[1]
+      if($(card1).attr('data-card-name') === $(card2).attr("data-card-name")) {
+        this.pairsGuessed++;
+
+      } else if (card1.attr('data-card-name') !== card2.attr("data-card-name")) {
+        $(this.pickedCards[0]).children(".front, .back").toggleClass("front back")
+        $(this.pickedCards[1]).children(".front, .back").toggleClass("front back")
+        // some for other 
+      }
+      this.pickedCards = [] 
   
+}
 
   
   MemoryGame.prototype.isFinished = function() {
