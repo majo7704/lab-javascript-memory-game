@@ -59,7 +59,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   });
 
   
-  let generate = function (){
+  let isFinished = function (){
+
     let shuffledCards = shuffleCards(cards);
     let fragment = document.createDocumentFragment();
     cards.forEach(function createCard(card) {

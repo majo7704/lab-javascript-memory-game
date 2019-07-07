@@ -24,11 +24,12 @@ class MemoryGame {
   MemoryGame.prototype.checkIfPair = function () {
     let pickedCards = this.pickedCards
       this.pairsClicked++;
+    document.getElementById("pairs_clicked").innerText = this.pairsClicked;
       let card1 = pickedCards[0];
       let card2 = pickedCards[1]
       if($(card1).attr('data-card-name') === $(card2).attr("data-card-name")) {
         this.pairsGuessed++;
-        
+        document.getElementById("pairs_guessed").innerText = this.pairsGuessed;   
 
       } else if (card1.attr('data-card-name') !== card2.attr("data-card-name")) {
         $(this.pickedCards[0]).children(".front, .back").toggleClass("front back")
@@ -41,5 +42,5 @@ class MemoryGame {
 
   
   MemoryGame.prototype.isFinished = function() {
-
+    
   }
