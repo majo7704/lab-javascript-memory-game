@@ -55,8 +55,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         if(memoryGame.pickedCards.length === 2) {
           memoryGame.checkIfPair()
         }
-    }
-    
+      }
   });
 
   

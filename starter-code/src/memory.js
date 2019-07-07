@@ -28,6 +28,7 @@ class MemoryGame {
       let card2 = pickedCards[1]
       if($(card1).attr('data-card-name') === $(card2).attr("data-card-name")) {
         this.pairsGuessed++;
+        
 
       } else if (card1.attr('data-card-name') !== card2.attr("data-card-name")) {
         $(this.pickedCards[0]).children(".front, .back").toggleClass("front back")
